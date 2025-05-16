@@ -1,0 +1,10 @@
+[package]
+name = "CryptoPredictionGame"
+version = "1.0.0"
+authors = ["Your Name"]
+
+[addresses]
+crypto_game = "_"
+
+[dependencies]
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-framework", rev = "mainnet" } 
