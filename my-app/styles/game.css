@@ -1,0 +1,382 @@
+:root {
+  --background-dark: #111827;
+  --background-darker: #0f172a;
+  --text-white: #f9fafb;
+  --text-gray: #9ca3af;
+  --border-dark: #374151;
+  --card-bg: #1f2937;
+  --card-hover-bg: #2d3748;
+  --orange-500: #f59e0b;
+  --purple-500: #8b5cf6;
+  --green-500: #10b981;
+  --red-500: #ef4444;
+  --gradient-start: #f59e0b;
+  --gradient-end: #8b5cf6;
+}
+
+.main {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--background-dark), var(--background-darker));
+  color: var(--text-white);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 64rem;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-gray);
+  margin-bottom: 2rem;
+}
+
+.error-message {
+  color: var(--red-500);
+}
+
+.crypto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .crypto-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.crypto-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom right, var(--card-bg), var(--background-darker));
+  border: 1px solid var(--border-dark);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.crypto-card.selectable {
+  cursor: pointer;
+}
+
+.crypto-card.selected {
+  border: 2px solid var(--crypto-color);
+  transform: scale(1.02);
+}
+
+.crypto-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.crypto-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.crypto-name {
+  display: flex;
+  align-items: center;
+}
+
+.crypto-icon {
+  height: 2rem;
+  width: 2rem;
+  color: var(--crypto-color);
+  margin-right: 0.5rem;
+}
+
+.crypto-name h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.crypto-price {
+  font-size: 1.25rem;
+  font-family: monospace;
+}
+
+.chart-container {
+  height: 8rem;
+  margin-bottom: 1rem;
+}
+
+.crypto-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price-change {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.25rem;
+}
+
+.arrow.up {
+  color: var(--green-500);
+}
+
+.arrow.down {
+  color: var(--red-500);
+}
+
+.positive {
+  color: var(--green-500);
+}
+
+.negative {
+  color: var(--red-500);
+}
+
+.winner-badge {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--crypto-color), 0.1);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crypto-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.select-button {
+  background-color: rgba(17, 24, 39, 0.8);
+  border: 1px solid var(--crypto-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.select-button:hover {
+  background-color: rgba(31, 41, 55, 0.8);
+}
+
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.countdown-timer {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.countdown-background {
+  stroke: #374151;
+  stroke-width: 10;
+  fill: transparent;
+}
+
+.countdown-progress {
+  stroke: var(--purple-500);
+  stroke-width: 10;
+  stroke-linecap: round;
+  fill: transparent;
+  stroke-dasharray: 251.2;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.countdown-number {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.result-container {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.result-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.result-details {
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+.bet-result {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.win-message {
+  color: var(--green-500);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loss-message {
+  color: var(--red-500);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coin-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.next-round-button,
+.play-again-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.next-round-button {
+  background: linear-gradient(to right, var(--orange-500), var(--purple-500));
+  color: white;
+}
+
+.next-round-button:hover {
+  background: linear-gradient(to right, #f97316, #9333ea);
+}
+
+.play-again-button {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4b5563;
+}
+
+.play-again-button:hover {
+  background-color: #374151;
+}
+
+.button-icon {
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--purple-500);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}

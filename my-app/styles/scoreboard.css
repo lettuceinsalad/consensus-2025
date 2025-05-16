@@ -1,0 +1,74 @@
+.scoreboard {
+  background-color: rgba(31, 41, 55, 0.5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #374151;
+  margin-bottom: 1rem;
+}
+
+.scoreboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scoreboard-title {
+  display: flex;
+  align-items: center;
+}
+
+.trophy-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #eab308;
+  margin-right: 0.5rem;
+}
+
+.scoreboard-title h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.win-rate {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.score-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.stat-box {
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.stat-box.wins {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.stat-box.losses {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.stat-box.wins .stat-label {
+  color: #34d399;
+}
+
+.stat-box.losses .stat-label {
+  color: #f87171;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
