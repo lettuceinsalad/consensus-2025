@@ -1,0 +1,17 @@
+[package]
+name = "betcoin"
+version = "1.0.0"
+authors = []
+
+[addresses]
+BetGame = "0xb59bbba782d7643233d773e1a5d0f0e169a0d17b68e59e94f8af6216354ef999"
+tests = "0x42"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "devnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
